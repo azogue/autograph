@@ -75,3 +75,35 @@ Acudir a **[valide.redsara.es](https://valide.redsara.es/valide/validarFirma/eje
 ![Demo](https://github.com/azogue/autograph/blob/master/docs/demo.gif)
 
 El _gif_ está generado a partir de una grabación de pantalla realizada con Quicktime Player (parte de macOS), que da lugar a un fichero `.mov`, y de ahí a gif vía `ffmpeg` con el comando: `ffmpeg -i video.mov -pix_fmt rgb24 -r 5 demo.gif`.
+
+
+# Comprobación/visualización de firmas digitales
+
+Se incluye otro shell script y otro _workflow_ de _Automator_, de tipo 'Servicio', para disponer de un nuevo menú en el _Finder_ para mostrar las firmas digitales de uno o más archivos haciendo click derecho y seleccionando: `Servicios -> Muestra firma digital`.
+Este _workflow_ llama al script de visualización con cada archivo seleccionado:
+
+```text
+for f in "$@"
+do
+    echo "* SHOW: $f"
+    /path/to/script/show_autograph.sh $f
+done
+```
+
+Y el contenido de este script es:
+
+**_show_autograph.sh_**
+```bash
+#!/usr/bin/env bash
+# Usage:
+# ./show_autograph.sh path/to/file_to_sign.pdf
+# Opens a panel showing the digital signature of the file
+
+PATH_JAR=/Applications/AutoFirma.app/Contents/Resources/JAR/AutoFirma.jar
+
+IN="${@:1}"
+echo "* CHECK SIGN IN: ${IN}"
+RES=`(java -jar ${PATH_JAR} verify -i "${IN}")`
+
+exit 0
+```
