@@ -62,11 +62,6 @@
 					<string>for f in "$@"
 do
 	echo "* SIGNING: $f"
-	DIR="${f%/*}"
-    FILE="${f##*/}"
-	FILE_WO_EXT="${FILE%.*}"
-	EXTENSION="${f##*.}"
-    OUT="${DIR}/FIRMADOS/${FILE_WO_EXT}__signed.${EXTENSION}"
 	/Users/uge/Dropbox/PYTHON/PYPROJECTS/autograph/autograph.sh $f
 done
 </string>
@@ -182,7 +177,7 @@ done
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>618.500000:359.000000</string>
+				<string>618.500000:253.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Spanish.lproj/main.nib</string>
 			</dict>
