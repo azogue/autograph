@@ -16,7 +16,7 @@ FILE_WO_EXT="${FILE%.*}"
 EXTENSION="${IN##*.}"
 OUT="${DIR}/${SUBDIR_OUT}/${FILE_WO_EXT}__signed.${EXTENSION}"
 
-mkdir ${DIR}/${SUBDIR_OUT}
+mkdir "${DIR}/${SUBDIR_OUT}"
 echo "**** Firmando digitalmente ${IN} ==> ${OUT}: **"
 RES=`(java -jar ${PATH_JAR} sign -i "${IN}" -o "${OUT}" -alias "${ALIAS}"   \
    -store mac -xml | grep "result>true" | wc -l | sed -e 's/^[[:space:]]*//')`
