@@ -107,3 +107,7 @@ RES=`(java -jar ${PATH_JAR} verify -i "${IN}")`
 
 exit 0
 ```
+
+## Demo visual
+
+![Demo](https://github.com/azogue/autograph/blob/master/docs/demo_show.gif)
