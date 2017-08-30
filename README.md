@@ -2,6 +2,8 @@
 
 Para firmar documentalmente cualquier tipo de archivo, con objeto de automatizar esa tediosa tarea, creando una carpeta con una acción asociada que crea versiones firmadas digitalmente de los archivos arrastrados, usando la firma digital de la FNMT.
 
+Consiste en un simple _shell script_ para usar el CLI de la aplicación oficial de firma electrónica en España, **[AutoFirma v.1.5](http://firmaelectronica.gob.es/Home/Ciudadanos/Aplicaciones-Firma.html)**, del Ministerio de Hacienda.
+
 ### Uso simple por fichero:
 
 ```bash
@@ -30,7 +32,9 @@ Sustituyendo `path/to/script` con el path real, o simplemente añadiendo ahí el
 ```bash
 #!/usr/bin/env bash
 # Usage:
-# ./autograph.sh file_to_sign.pdf new_signed_file.pdf
+# ./autograph.sh path/to/file_to_sign.pdf
+# Generates:
+# path/to/FIRMADOS/file_to_sign__signed.pdf
 
 ALIAS="apellido1 apellido2 nombre - 123456789a"
 PATH_JAR=/Applications/AutoFirma.app/Contents/Resources/JAR/AutoFirma.jar
@@ -61,13 +65,10 @@ exit 0
 
 ## Check de firma digital:
 
-Acudir a **[valide.redsara.es](https://valide.redsara.es/valide/validarFirma/ejecutar.html)**, cargar el fichero, rellenar el captcha, y comprobar los resultados.
+Acudir a **[valide.redsara.es](https://valide.redsara.es/valide/validarFirma/ejecutar.html)**, cargar el fichero, rellenar el _captcha_, y comprobar los resultados.
 
 ## Demo visual
 
 ![Demo](https://github.com/azogue/autograph/blob/master/docs/demo.gif)
 
-El _gif_ está generado a partir de una grabación de pantalla realizada con Quicktime Player (parte de macOS), que da lugar a un fichero `.mov`, y de ahí a gif vía `ffmpeg`:
-```bash
-ffmpeg -i video.mov -pix_fmt rgb24 -r 5 demo.gif
-```
+El _gif_ está generado a partir de una grabación de pantalla realizada con Quicktime Player (parte de macOS), que da lugar a un fichero `.mov`, y de ahí a gif vía `ffmpeg` con el comando: `ffmpeg -i video.mov -pix_fmt rgb24 -r 5 demo.gif`.

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Usage:
-# ./autograph.sh file_to_sign.pdf new_signed_file.pdf
+# ./autograph.sh path/to/file_to_sign.pdf
+# Generates:
+# path/to/FIRMADOS/file_to_sign__signed.pdf
 
 ALIAS="apellido1 apellido2 nombre - 123456789a"
 PATH_JAR=/Applications/AutoFirma.app/Contents/Resources/JAR/AutoFirma.jar
